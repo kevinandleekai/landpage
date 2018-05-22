@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+	<title>订单成功后</title>
+	<script>
+		(function(doc, win){
+			var docEl = doc.documentElement;
+			var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var recalc = function () {
+                var htmlWidth = docEl.clientWidth || doc.body.clientWidth;
+                if (!htmlWidth) return;
+                if (htmlWidth > 640) {
+                	htmlWidth = 640;
+                }
+                docEl.style.fontSize = htmlWidth / 10 + 'px';
+            };
+            recalc();
+        	if (!doc.addEventListener) return;
+        	win.addEventListener(resizeEvt, recalc, false);
+        	doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</head>
+<body>
+	<!-- 订单成功后弹出的层 -->
+	<div id="app">
+		<div class="luo-success" :class="{'luo-success-active':orderLayerShow}">
+			<div class="luo-success-main">
+				<div class="luo-sucss-top">
+					<img src="./images/luo-order-success.png" alt="" class="luo-sucss-img">
+					<h4 class="luo-success-title">恭喜覃俊威， 您的订单提交成功</h4>
+					<p class="luo-success-intro">我们将于每天下午的17点统一发货，快递号将以短信的形式发送至您的手机，请您注意查收。最后感谢您的支持，祝您生活愉快。</p>
+				</div>
+				<div class="luo-success-content">
+					<h4>订单信息</h4>
+					<p><label>姓名：</label><span v-text="sureName"></span></p>
+					<p><label>电话：</label><span v-text="sureTel"></span></p>
+					<p><label>地址：</label><span v-text="sureAddr"></span></p>
+					<p><label>付款方式：</label><span v-text="sureBuyWay"></span></p>
+				</div>
+				<div class="luo-success-btngroup">
+					<div class="luo-success-btn" @click="orderSuccHandle">确定</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				orderLayerShow: true,
+				sureName: '',
+				sureTel: '',
+				sureAddr: '',
+				sureBuyWay: ''
+			},
+			methods: {
+				orderSuccHandle: function() {
+					console.log('click');
+					this.orderLayerShow = !this.orderLayerShow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

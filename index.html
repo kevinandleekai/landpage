@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/layer.css">
+    <link rel="stylesheet" type="text/css" href="./css/area-select.css">
+	<title>落地页</title>
+	<script>
+		(function(doc, win){
+			var docEl = doc.documentElement;
+			var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var recalc = function () {
+                var htmlWidth = docEl.clientWidth || doc.body.clientWidth;
+                if (!htmlWidth) return;
+                if (htmlWidth > 640) {
+                	htmlWidth = 640;
+                }
+                docEl.style.fontSize = htmlWidth / 10 + 'px';
+            };
+            recalc();
+        	if (!doc.addEventListener) return;
+        	win.addEventListener(resizeEvt, recalc, false);
+        	doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</head>
+<body>
+	<div class="wrap" id="wrap">
+		<!-- 底部导航 -->
+		<div class="luo-nav">
+			<ul class="luo-nav-list">
+				<li class="luo-nav-item">
+					<a href="tel:13794437175" class="luo-nav-link">
+						<i><img src="./images/call.png" alt=""></i>
+						<span>电话咨询</span>
+					</a>
+				</li>
+				<li class="luo-nav-item">
+					<a href="javascript:;" class="luo-nav-link" @click="layerHandle">
+						<i><img src="./images/sms.png" alt=""></i>
+						<span>在线客服</span>
+					</a>
+				</li>
+				<li class="luo-nav-item">
+					<a href="#luo-order" class="luo-nav-link" @click="goTobottom">
+						<i><img src="./images/buy.png" alt=""></i>
+						<span>在线下单</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- banner图 -->
+		<div class="luo-banner">
+		   <img src="./images/luo-banner.png" alt="">
+		</div>
+		<div class="luo-buy">
+			<!-- <div class="luo-buy-inner">
+				<div class="luo-buy-inner-newprice">￥298</div>
+				<div class="luo-buy-inner-oldprice">原价：698元</div>
+				<div class="luo-buy-inner-person">已有2541人购买</div>
+			</div> -->
+			<img src="./images/luo-buy-countdown.png" alt="">
+			<div class="luo-buy-inner">
+				<div class="luo-buy-price">
+					<span>¥</span>
+					<strong>298</strong>
+				</div>
+				<div class="luo-buy-info">
+					<div class="luo-buy-oldprice">原价：<del>698元</del></div>
+					<div class="luo-buy-soldcount">已有<span>2541</span>人购买</div>
+				</div>
+				<div class="luo-buy-countdown">
+					<div class="luo-buy-countdown-txt">距结束仅剩</div>
+					<div class="luo-buy-countdown-clockrun">
+		                 <span class="luo-buy-countdown-num" v-text="J_TimeHour"></span><span class="luo-buy-countdown-dot">:</span>
+		                 <span class="luo-buy-countdown-num" v-text="J_TimeMin"></span><span class="luo-buy-countdown-dot">:</span>
+		                 <span class="luo-buy-countdown-num" v-text="J_TimeSec"></span><span class="luo-buy-countdown-dot">:</span>
+		                 <span class="luo-buy-countdown-num" v-text="J_TimeWSec"></span>
+	              	</div>
+				</div>
+			</div>
+		</div>
+		<div class="luo-btn-box">
+			<a class="luo-btn" href="#luo-order" @click="goTobottom">立即购买</a>	
+		</div>			
+		<div class="luo-video">
+			<img src="./images/luo-video-replace.png" alt="">
+		</div>
+		<div class="luo-imglist">
+			<img src="./images/luo-imglist-01.png" alt="">
+			<img src="./images/luo-imglist-02.png" alt="">
+			<img src="./images/luo-imglist-03.png" alt="">
+			<img src="./images/luo-imglist-04.png" alt="">
+			<img src="./images/luo-imglist-05.png" alt="">
+			<img src="./images/luo-imglist-06.png" alt="">
+			<img src="./images/luo-imglist-07.png" alt="">
+			<img src="./images/luo-imglist-08.png" alt="">
+			<img src="./images/luo-imglist-09.png" alt="">
+			<img src="./images/luo-imglist-10.png" alt="">
+			<img src="./images/luo-imglist-11.png" alt="">
+			<img src="./images/luo-imglist-12.png" alt="">
+			<img src="./images/luo-imglist-13.png" alt="">
+		</div>
+		<!-- 文本内容切换 -->
+		<div class="tab">
+			<ul class="tab_title">
+				<li class="tab_title_item" :class="{tab_title_item_active: tabContentShow==1}" @click="changeContentDisplay(1)">购买信息</li>
+				<li class="tab_title_item" :class="{tab_title_item_active: tabContentShow==2}"  @click="changeContentDisplay(2)">商品评价</li>
+				<li class="tab_title_item" :class="{tab_title_item_active: tabContentShow==3}"  @click="changeContentDisplay(3)">常见问题</li>
+			</ul>
+			<div class="tab_content">
+				<div class="luo-order tab_content_item"  :class="{tab_content_item_active: tabContentShow==1}" id="luo-order">
+					<h3 class="luo-order-title">订单信息</h3>
+					<div class="luo-order-pro">
+						<div class="luo-pro-box">
+							<img src="./images/luo-order-pic.png" alt="" class="luo-pro-img">
+						</div>
+						<div class="luo-pro-content">
+							<h4 class="ellipse">小蚁兵团多功能随声wifi</h4>
+							<span class="luo-pro-newprice">{{calcNewPrice}}</span>
+							<span class="luo-pro-oldprice">{{calcOldPrice}}</span>
+						</div>
+					</div>
+					<div class="luo-order-action">
+						<h3 class="luo-action-title">购买数量</h3>
+						<ul class="luo-action-list">
+							<li class="luo-action-item luo-action-oper" @click="operAmount(0)">-</li>
+							<li class="luo-action-item luo-action-text">{{amount}}</li>
+							<li class="luo-action-item luo-action-oper" @click="operAmount(1)">+</li>
+						</ul>
+					</div>
+					<div class="luo-order-user">
+						<div class="luo-user-item">
+							<label>收件人姓名</label>
+							<input type="text" name="orderName" placeholder="请输入姓名" v-model="orderName">
+						</div>
+						<div class="luo-user-item">
+							<label>联系方式</label>
+							<input type="text" name="orderTel" placeholder="请输入联系方式" v-model="orderTel">
+						</div>
+						<div class="luo-user-item">
+							<label>所在地区</label>
+							<p @click="maskStatus">{{fullArea}}</p>
+						</div>
+						<div class="luo-user-item">
+							<label>详细地址</label>
+							<input type="text" name="orderAddr" placeholder="请输入详细地址">					
+						</div>
+						<div class="luo-user-item">
+							<label>买家留言</label>
+							<input type="text" name="orderTel" placeholder="选填">					
+						</div>
+						<div class="luo-user-item">
+							<label>付款方式</label>
+							<div>货到付款</div>
+						</div>
+					</div>
+					<div class="luo-user-message">
+						<div class="luo-btn-box">
+							<a class="luo-btn" href="javascript:;" @click="submitOrder">提交订单</a>
+						</div> 
+					</div>
+				</div>
+				<div class="luo-evaluate tab_content_item" :class="{tab_content_item_active: tabContentShow==2}">
+					<div class="luo-evaluate-good">
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">静***瑶</span>
+								<img src="./images/luo-yellow-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>宝贝很好试了下网速很快</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">华**月</span>
+								<img src="./images/luo-heart-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>收到货第一时间试了下，网速很快，充电也是快充，很满意</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">王**5</span>
+								<img src="./images/luo-heart-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>为商品点赞 性价比非常高，每个月能给我省好多流量费用</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">y**4</span>
+								<img src="./images/luo-heart-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>好用，刚开始上不去网，客服很耐心的讲解，后来发现是打开方式不对，应该是长按3秒打开，不错廷好用</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">w**4</span>
+								<img src="./images/luo-heart-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>太喜欢了！原来每个月流量用十几G，广流量费用就一百多，用起来还需要特别小心生怕用超了（大家都知道移动超额的流量费用有多坑爹）。现在每个月40G随便用，也不怕用超了，40G用完自己停机，充值后自动恢复。总之好用，便宜，已经推荐三个小伙伴买了</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-good-item">
+							<p>
+								<span class="luo-evaluate-good-username">t**6</span>
+								<img src="./images/luo-heart-diamond.png" alt="" class="luo-evaluate-good-img">
+							</p>
+							<p>不错！原来办的无限流量卡，省内无限但出省只有2G，常出差一直不够用，每个月都要多花很多花费，这个全国流量很适合我，而且打开后还可以让平板、电脑、手机一起用，出差必备神奇呀</p>
+							<p class="luo-evaluate-time">2018年5月21号</p>
+						</div>
+						<div class="luo-evaluate-all">
+							<ul class="luo-evaluate-all-title">
+								<div>姓名</div>
+								<div>收货地址</div>
+								<div>手机号码</div>
+								<div>订单状态</div>
+							</ul>
+							<div class="luo-evaluate-all-content" id="luo-evaluate-all-content">
+								<div class="luo-evaluate-all-inner" id="luo-evaluate-all-inner">
+									<div class="luo-evaluate-all-list">
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">张</div>
+											<div class="luo-evaluate-all-addr">广东省广州市天河区</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">陈</div>
+											<div class="luo-evaluate-all-addr">浙江省宁波市象山县</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">宋</div>
+											<div class="luo-evaluate-all-addr">四川省绵阳市涪城区</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">罗</div>
+											<div class="luo-evaluate-all-addr">江苏省连云港市连云区</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">欧</div>
+											<div class="luo-evaluate-all-addr">黑龙江省哈尔滨市南岗区</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+										<div class="luo-evaluate-all-item">
+											<div class="luo-evaluate-all-name">李</div>
+											<div class="luo-evaluate-all-addr">广东省广州市</div>
+											<div class="luo-evaluate-all-tel">12345678911</div>
+											<div class="luo-evaluate-all-state">已下单</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="luo-question tab_content_item" :class="{tab_content_item_active: tabContentShow==3}">
+					<h3 class="luo-question-title">常见问题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q&nbsp;&&nbsp;A</h3>
+					<div class="luo-question-content">
+						<ul class="luo-question-list">
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>购物流程</h4>
+							   	  <p>填写信息提交订单——卖家发货免运费——检查物品完整签收——购买成功</p>
+							   </div>
+							</li>
+							
+							
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>产品有什么保障</h4>
+							   	  <p> 货到付款，7天包退，1年包换。</p>
+							   </div>
+							</li>
+
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>发哪个快递？多久发货</h4>
+							   	  <p>圆通快递包邮！17点前下单当天发货，17点后次日发货。</p>
+							   </div>
+							</li>
+							  
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>可以修改WIFI名字和密码吗？</h4>
+							   	  <p> 后台可以自己任意修改，具体请参照说明书</p>
+							   </div>
+							</li>
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>流量怎么收费？</h4>
+							   	  <p> 每月固定月租39元，可使用40G不限速全国流量；40G用完用户可以自助充值15元10G、25元20G、40元40G三种套餐，月底清0  </p>
+							   </div>
+							</li>
+							<li class="luo-question-item">
+							   <p class="luo-qustion-number">
+							   	 <label></label>
+							   	 <img src="./images/luo-qustion-number.png" alt="">
+							   </p>
+							   <div class="luo-question-answer">
+							   	  <h4>Q：国外能不能用？</h4>
+							   	  <p> 暂不支持港、澳、台，国外地区。</p>
+							   </div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		
+		<!-- 公司信息 -->
+		<div class="luo-company">
+			<p>2005-2019 深圳云峰互动广告有限公司</p>
+			<p>售后电话：133 1870 8954 </p>
+			<p>深圳市龙华新区民治街道宝山工业区塘水围M栋402A </p>
+			<p>粤ICP备17063444号-12</p>
+		</div>
+		<!-- 省市区弹层 -->
+		<div class="area-mask" @click.self="select" :class="{mask_active: areaSelect}">
+			<transition name="fade">	
+		        <div class="area-contain area_contain_active">
+		        	<section class="area-main">
+			            <header class="area-header">所在地区<i class="iconfont icon-close area-close"></i></header>
+			            <div class="area-top  border-a">
+			                <div class="area-province area-top-item" :class="{area_top_active:1==areaStatus}" @click="selectArea(1)">{{checkArea.province}}</div>
+			                <div class="area-city area-top-item" :class="{area_top_active:2==areaStatus}" @click="selectArea(2)">{{checkArea.city}}</div>
+			                <div class="area-region area-top-item" :class="{area_top_active:3==areaStatus}" @click="selectArea(3)">{{checkArea.region}}</div>
+			            </div>
+			            <div class="area-content border">
+			            	<ul class="area-data" v-show="provinceState">
+			            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+			            			<span class="area-text">{{item.region_name}}</span>
+			            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+			            		</li>
+			            	</ul>
+			            	<ul class="area-data" v-show="cityState">
+			            		<li class="area-data-item" v-for="(item, index) in cityList" @click="checkCityOne(item.region_id, item.region_name)">
+			            			<span class="area-text">{{item.region_name}}</span>
+			            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+			            		</li>
+			            	</ul>
+			            	<ul class="area-data" v-show="countyState">
+			            		<li class="area-data-item" v-for="(item, index) in countyList" @click="checkRegionOne(index, item.region_name)">
+			            			<span class="area-text">{{item.region_name}}</span>
+			            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+			            		</li>
+			            	</ul>
+			            </div>
+		        	</section>
+		        </div>
+	   		 </transition>
+		</div>
+
+		<!-- 客服弹出框 -->
+		<div class="luo-layer" :class="{'luo-layer-active':layerShow}">
+			<div class="luo-layer-mask" @click="layerHandle"></div>
+			<div class="luo-layer-main">
+				<div class="luo-layer-close" @click.self="layerHandle"><img src="./images/luo-layer-close.png" alt="" @click="layerHandle"></div>
+				<img src="./images/luo-layer-bg.png" alt="" class="luo-layer-bg">
+				<div class="luo-layer-body">
+					<div class="luo-layer-portrait"><img src="./images/luo-portrait.png" alt=""></div>
+					<ul class="layer-layer-list">
+						<li class="layer-layer-item">客服微信号</li>
+						<li class="layer-layer-item">dfasd55446455555</li>
+					</ul>
+					<!-- <a href="javascript:;" class="layer-btn">客服微信号</a> -->
+					<div class="layer-line"></div>
+					<div class="layer-bottom-txt">长按复制客服微信号，打开微信，添加好友</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript" src="./js/layui/layui.js"></script>
+	<script type="text/javascript" src="./js/axios.min.js"></script>
+	<!-- <script type="text/javascript" src="./js/area-select.js"></script> -->
+	<script type="text/javascript" src="./js/app.js"></script>
+</body>
+</html>

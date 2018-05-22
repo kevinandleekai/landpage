@@ -1,0 +1,718 @@
+body {
+	font-family: 微软雅黑
+}
+
+body,ul,p,h3,h4 {
+	margin: 0
+}
+
+ul {
+	padding: 0
+}
+
+li {
+	list-style: none
+}
+
+a {
+	text-decoration: none
+}
+
+.ellipse {
+	text-overflow: hidden;
+	overflow: hidden;
+	white-space: nowrap
+}
+
+.luo-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 80
+}
+
+.luo-nav .luo-nav-list {
+	height: 1.25rem;
+	background: #e30;
+	overflow: hidden;
+	display: -webkit-flex;
+	display: flex
+}
+
+.luo-nav .luo-nav-item {
+	-webkit-flex: 1;
+	flex: 1
+}
+
+.luo-nav .luo-nav-link {
+	display: block;
+	line-height: 1.25rem;
+	color: #fff;
+	font-size: .8em;
+	border-right: 1px dotted #f66;
+	text-align: center;
+	font-size: 0
+}
+
+.luo-nav .luo-nav-link:nth-of-type(3) {
+	border-right: 0
+}
+
+.luo-nav .luo-nav-link>i {
+	vertical-align: middle;
+	display: inline-block;
+	width: 0.67rem;
+	height: 0.67rem;
+	margin-top: 0.12rem;
+}
+
+.luo-nav .luo-nav-link img {
+	display: block;
+	width: 100%;
+	height: 100%
+}
+
+.luo-nav .luo-nav-link>span {
+	font-size: .5rem;
+	vertical-align: middle
+}
+
+.luo-btn-box {
+	padding: .28rem;
+	background: #fff
+}
+.luo-btn {
+	display: block;
+	line-height: 1.39rem;
+	margin: 0 auto;
+	background-color: #e23333;
+	border-radius: .12rem;
+	font-size: .56rem;
+	color: #fff;
+	text-align: center
+}
+.luo-banner img,.luo-buy img,.luo-video img,.luo-imglist img {
+	display: block;
+	margin: 0 auto;
+	width: auto;
+	max-width: 100%
+}
+.luo-buy {
+	font-size: 0.4rem;
+	height: 1.67rem;
+	position: relative;
+}
+.luo-buy img {
+	height: 100%;
+	display: block;
+}
+.luo-buy .luo-buy-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	display: -webkit-flex;
+}
+.luo-buy .luo-buy-price {
+	padding: 0 0 0 0.28rem;
+    max-width: 4.2rem;
+}
+.luo-buy .luo-buy-price span,  
+.luo-buy .luo-buy-price strong {
+	display: inline-block;
+	color: #fff;
+}
+.luo-buy .luo-buy-price strong {
+	font-size: 1.12rem;
+	padding-top: 0.12rem;
+}
+.luo-buy .luo-buy-info {
+    width: 4rem;
+    padding: 0.42rem 0 0 0.2rem;
+    color: #f5e9ad;
+}
+.luo-buy .luo-buy-oldprice {
+    font-size: 0.34rem;
+}
+.luo-buy .luo-buy-oldprice del {
+    text-decoration: line-through;
+}
+.luo-buy .luo-buy-soldcount {
+    font-size: 0.34rem;
+}
+.luo-buy .luo-buy-soldcount span {
+}
+.luo-buy .luo-buy-countdown {
+	padding: 0.42rem 0 0 0;
+	-webkit-flex: 1;
+	flex: 1;
+}
+.luo-buy .luo-buy-countdown-txt {
+    font-size: 0.34rem;
+    color: #f5e9ad;
+}
+.luo-buy .luo-buy-countdown-clockrun {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+}
+.luo-buy .luo-buy-countdown-num {
+	float: left;
+    min-width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    background: #543411;
+    border-radius: 3px;
+}
+.luo-buy .luo-buy-countdown-dot {
+	float: left;
+    width: 4px;
+    height: 16px;
+    line-height: 18px;
+    text-align: center;
+    color: grey;
+}
+.luo-question {
+	padding: 0 .28rem;
+	background-color: #e7e7e7;
+	padding-bottom: .84rem
+}
+
+.luo-question .luo-question-title {
+	font-size: .44rem;
+	padding: .58rem 0 .13rem 0;
+	color: #404040;
+	border-bottom: 1px solid #f00
+}
+
+.luo-question .luo-question-content {
+	margin-top: .28rem
+}
+
+.luo-question .luo-question-item {
+	margin-bottom: .28rem;
+	position: relative
+}
+
+.luo-question .luo-qustion-number {
+	margin-right: .28rem;
+	position: absolute;
+	top: .14rem;
+	left: 0;
+	width: auto;
+	height: .87rem;
+	line-height: .87rem;
+	display: -webkit-flex;
+	display: flex
+}
+
+.luo-question .luo-qustion-number>label {
+	line-height: .88rem;
+	margin-right: .06rem
+}
+
+.luo-question .luo-qustion-number>img {
+	height: .87rem
+}
+
+.luo-question .luo-question-answer {
+	margin-left: 1rem
+}
+
+.luo-question .luo-question-answer h4 {
+	color: #ab000c;
+	font-size: .44rem
+}
+
+.luo-question .luo-question-answer p {
+	font-size: .44rem
+}
+
+.luo-order {
+	background-color: #e7e7e7
+}
+
+.luo-order .luo-order-title {
+	text-align: center;
+	line-height: .84rem;
+	padding-top: .28rem;
+	font-weight: 400;
+	background-color: #fff;
+	font-size: .45rem
+}
+
+.luo-order .luo-order-pro {
+	padding: .42rem;
+	display: flex;
+	display: -webkit-flex;
+	border-bottom: 1px solid #e7e7e7;
+	background-color: #fff
+}
+
+.luo-order .luo-order-action {
+	background-color: #fff
+}
+
+.luo-order .luo-order-user {
+	background-color: #fff
+}
+
+.luo-order .luo-pro-box {
+	border: 1px solid #e7e7e7;
+	width: 2.2rem;
+	height: 2.2rem;
+	margin-right: .28rem;
+	overflow: hidden
+}
+
+.luo-order .luo-pro-box img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	width: auto
+}
+
+.luo-order .luo-pro-content {
+	-webkit-flex: 1;
+	flex: 1
+}
+
+.luo-order .luo-pro-content h4 {
+	padding-top: .28rem;
+	font-weight: 300;
+	font-size: .45rem
+}
+
+.luo-order .luo-pro-newprice {
+	font-size: .62rem;
+	color: #f11616
+}
+
+.luo-order .luo-pro-oldprice {
+	font-size: .34rem;
+	text-decoration: line-through;
+}
+
+.luo-order-action {
+	padding: .28rem;
+	display: -webkit-flex;
+	display: flex;
+	overflow: hidden
+}
+
+.luo-order-action .luo-action-title {
+	font-size: .45rem;
+	font-weight: 300;
+	-webkit-align-self: center;
+	align-self: center
+}
+
+.luo-order-action .luo-action-list {
+	-webkit-flex: 1;
+	flex: 1;
+	text-align: right;
+	-webkit-align-self: center;
+	align-self: center;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end
+}
+
+.luo-order-action .luo-action-text {
+	margin: 0 .28rem
+}
+
+.luo-order-action .luo-action-item {
+	display: inline-block;
+	font-size: .56rem
+}
+
+.luo-order-action .luo-action-oper {
+	width: .84rem;
+	height: .84rem;
+	background-color: #ccc;
+	text-align: center;
+	line-height: .84rem;
+	font-weight: 600;
+	color: #222
+}
+
+.luo-order-user {
+	margin: .14rem 0
+}
+
+.luo-order-user .luo-user-item {
+	line-height: 1.12rem;
+	font-size: .45rem;
+	display: -webkit-flex;
+	display: flex;
+	border-bottom: 1px solid #e7e7e7;
+	padding: 0 .28rem 0 .42rem
+}
+
+.luo-order-user .luo-user-item > label {
+	width: 3.4rem;
+	font-weight: 300;
+	position: relative;
+}
+.luo-order-user .luo-user-item > label:after {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 0.45rem;
+	right: 0.56rem;
+	top: 50%;
+	background-color:#e7e7e7; 
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+.luo-order-user .luo-user-item > div,
+.luo-order-user .luo-user-item > p {
+	color: #5f5f5f;
+}
+
+.luo-order-user .luo-user-item > input {
+	-webkit-flex: 1;
+	flex: 1;
+	color: #5f5f5f;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: 0.45rem;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+.luo-order-user .luo-user-item-diff {
+	font-size: .45rem;
+	padding: 0 .28rem 0 .42rem;
+}
+.luo-order-user .luo-user-item-diff > p {
+	line-height: 1.12rem;
+	font-size: .45rem;
+}
+.luo-order-user .luo-user-citylist {
+	line-height: 1.12rem;
+	font-size: .45rem;
+	border-bottom: 1px solid #e7e7e7;
+}
+.luo-order-user .luo-user-textarea {
+	box-sizing: border-box;
+}
+.luo-order-user .luo-user-item-diff textarea {
+	display: block;
+    border: 0;
+    resize: none;
+    width: 100%;
+    color: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    outline: 0;
+}
+.luo-order-user .luo-user-item-diff label,
+.luo-order-user .luo-user-item-diff select {
+	vertical-align: middle;
+	display: inline-block;
+}
+.luo-user-message {
+	padding: 0 .28rem 0 .42rem;
+	font-size: .45rem;
+	background-color: #fff
+}
+
+.luo-user-message> h4 {
+	line-height: 1.12rem;
+	font-weight: 300
+}
+
+.luo-user-message > textarea {
+	display: block;
+	border: 0;
+	resize: none;
+	width: 100%;
+	font-size: .45rem;
+	outline: 0
+}
+.luo-layer {
+	display: none;
+}
+.luo-layer-active {
+	display: block;
+}
+.luo-layer-mask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 101;
+	top: 0;
+	left: 0;
+}
+.luo-layer-main {
+	position: fixed;
+    z-index: 103;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 3px;
+}
+.luo-layer-close {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	-webkit-transform: translate(0 100%);
+    transform: translate(0, 100%);
+    padding: 0.41rem 0; 
+}
+.luo-layer-close img {
+	display: block;
+	margin: 0 auto;
+	width: 0.69rem;
+	height: 0.69rem;
+}
+.luo-layer-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.luo-layer-portrait {
+	padding: 0.75rem 0 0.48rem 0;
+}
+.luo-layer-portrait img {
+	width: 2.77rem;
+	height: 2.75rem;
+	display: block;
+	margin: 0 auto;
+}	
+.layer-layer-list {
+	margin-bottom: 0.76rem;
+}
+.layer-layer-item {
+	text-align: center;
+	font-size: 0.47rem;
+	background: url(../images/luo-item-line.png) no-repeat 0 100%;
+	background-size: contain;
+}
+.layer-layer-item:nth-of-type(1) {
+	padding-bottom: 0.48rem;
+}
+.layer-layer-item:nth-of-type(2) {
+	padding: 0.28rem 0;
+}
+ .layer-btn {
+	display: block;
+	height: 1.12rem;
+	line-height: 1.12rem;
+	font-size: 0.45rem;
+	color: #e55200;
+	border-radius: 1rem;
+	margin: 0 auto 0 auto;
+	background-color: #fff;
+	width: 60%;
+	text-decoration: none;
+} 
+.layer-bottom-txt {
+	text-align: center;
+	color: #fff;
+	font-size: 0.34rem;
+	padding-bottom: 1.97rem;
+}
+/*订单成功后*/
+.luo-success {
+	position: fixed;
+	padding: 0.34rem 0.28rem 0 0.28rem;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background-color: #e1e1e1;
+	z-index: 101;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+}
+.luo-success-active {
+	display: block;
+}
+.luo-success-main {
+	padding: 0 0.28rem;
+}
+.luo-sucss-top {
+	background-color: #fff;
+	margin-bottom: 1px;
+	padding: 0.70rem 0.28rem 0 0.28rem;
+}
+.luo-sucss-img {
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	margin: 0 auto 0.70rem;
+}
+.luo-success-title {
+	font-size: 0.48rem;
+	text-align: center;
+	font-weight: 500;
+	color: #474747;
+}
+.luo-success-intro {
+	font-size: 0.31rem;
+	color: #929292;
+	padding: 0.28rem;
+}
+.luo-success-content {
+	background-color: #fff;
+	padding: 0.72rem 0.28rem 1.52rem 0.28rem;
+}
+.luo-success-content * {
+	font-size: 0.45rem;
+}
+.luo-success-content h4 {
+	font-weight: 400;
+	line-height: 0.45rem;
+	height: 0.45rem;
+	position: relative;
+	margin-bottom: 0.38rem;
+	padding-left: 0.28rem;
+	overflow: hidden;
+}
+.luo-success-content h4:after {
+	content: '';
+	position: absolute;
+	top: 0.05rem;
+	left: 0;
+	height: 100%;
+	width: 0.06rem;
+	background-color: #09bb07;
+}
+.luo-success-content p {
+	line-height: 0.7rem;
+}
+.luo-success-btngroup {
+    padding: 0 0.28rem 0.89rem 0.28rem;
+	background-color: #fff;
+}
+.luo-success-btn {
+	margin: 0 auto;
+	height: 1.3rem;
+	line-height: 1.3rem;
+	text-align: center;
+	font-size: 0.50rem;
+	background-color: #09bb07;
+	color: #fff;
+	border-radius: 0.12rem;
+}
+.luo-company {
+	padding-bottom: 1.3rem;
+}
+.luo-company > p {
+	font-size: 0.31rem;
+	text-align: center;
+}
+.tab .tab_title {
+	display: flex;
+	display: -webkit-flex;
+	height: 1.34rem;
+	line-height: 1.34rem;
+}
+.tab .tab_title_item {
+	text-align: center;
+	font-size: 0.44rem;
+	flex: 1;
+	-webkit-flex: 1;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #e7e7e7;
+}
+.tab .tab_title_item_active {
+	border-bottom-color: #f11616;
+}
+.tab .tab_content_item {
+	display: none;
+}
+.tab .tab_content_item_active {
+	display: block;
+}
+.luo-evaluate .luo-evaluate-good-item {
+	border-bottom: 1px solid #e7e7e7;
+	padding: 0.28rem;
+}
+.luo-evaluate .luo-evaluate-good-item > p {
+	font-size: 0.36rem;
+}
+.luo-evaluate .luo-evaluate-good-username {
+	vertical-align: middle;
+	font-size: 0.44rem;
+}
+.luo-evaluate .luo-evaluate-good-img {
+	vertical-align: middle;
+	width: 0.35rem;
+	height: 0.28rem;
+}
+.luo-evaluate .luo-evaluate-time {
+	color: #e7e7e7;
+}
+.luo-evaluate .luo-evaluate-all-title {
+	font-size: 0.44rem;
+	display: flex;
+	display: -webkit-flex;
+	height: 1rem;
+	line-height: 1rem;
+	background-color: #e30;
+	color: #fff;
+}
+.luo-evaluate .luo-evaluate-all-content {
+	width: 97%;
+    margin: 0 auto;
+    border: 0.05rem solid #f60;
+}
+.luo-evaluate .luo-evaluate-all-inner {
+	background-color: #f5f5f5;
+	height: 7rem;
+	overflow: hidden;
+}
+.luo-evaluate .luo-evaluate-all-title > div {
+	flex: 1;
+	-webkit-flex: 1;
+	text-align: center;
+}
+.luo-evaluate .luo-evaluate-all-item {
+	font-size: 0.22rem;
+	line-height: 1rem;
+	height: 1rem;
+	display: flex;
+	-webkit-display: flex;
+}
+.luo-evaluate .luo-evaluate-all-name {
+	width: 20%;
+}
+.luo-evaluate .luo-evaluate-all-addr {
+	width: 36%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.luo-evaluate .luo-evaluate-all-tel {
+	width: 18%;
+}
+.luo-evaluate .luo-evaluate-all-state {
+	-webkit-flex: 1;
+	flex: 1;
+}
+.luo-evaluate .luo-evaluate-all-item > div {
+	text-align: center;
+	float: left;
+}

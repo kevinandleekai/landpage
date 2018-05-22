@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1,minimum-scale=1">
+	<title>省市区三级联动</title>
+	<link rel="stylesheet" href="./css/area-select-bak.css">
+	<style>
+		* {margin: 0;padding: 0;}
+		li {list-style: none;}
+	</style>
+	<script>
+		(function(doc, win){
+			var docEl = doc.documentElement;
+			var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var recalc = function () {
+                var htmlWidth = docEl.clientWidth || doc.body.clientWidth;
+                if (!htmlWidth) return;
+                if (htmlWidth > 640) {
+                	htmlWidth = 640;
+                }
+                docEl.style.fontSize = htmlWidth / 10 + 'px';
+            };
+            recalc();
+        	if (!doc.addEventListener) return;
+        	win.addEventListener(resizeEvt, recalc, false);
+        	doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</head>
+<body>
+	<!-- 省市区弹层 -->
+	<div class="area-mask mask_active" 
+		@click.self="select" :class="{mask_active: areaSelect}">
+		<transition name="fade">	
+	        <div class="area-contain area_contain_active">
+	        	<section class="area-main">
+		            <header class="area-header">
+		            	所在地区<i class="iconfont icon-close area-close"></i>
+		            </header>
+
+		            <!-- 省市区标题 -->
+		            <div class="area-top border-a">
+		                <!-- <div class="area-province area-top-item area_top_active" :class="{area_top_active:1==areaStatus}" @click="selectArea(1)">{{checkArea.province}}</div>
+		                <div class="area-city area-top-item" :class="{area_top_active:2==areaStatus}" @click="selectArea(2)">{{checkArea.city}}</div>
+		                <div class="area-region area-top-item" :class="{area_top_active:3==areaStatus}" @click="selectArea(3)">{{checkArea.region}}</div>
+ -->
+		                <div class="area-province area-top-item area_top_active" :class="{area_top_active:1==areaStatus}" @click="selectArea(1)">湖北省</div>
+		                <div class="area-city area-top-item" :class="{area_top_active:2==areaStatus}" @click="selectArea(2)">武汉市</div>
+		                <div class="area-region area-top-item" :class="{area_top_active:3==areaStatus}" @click="selectArea(3)">黄梅县</div>
+		            </div>
+		            <div class="area-content border">
+		            	<ul class="area-data area-data-active" v-show="provinceState">
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">湖北</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">广东</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">广西</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">云南</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            		<li class="area-data-item" v-for="(item, index) in proviceList" @click="checkProvOne(item.region_id, item.region_name)">
+		            			<!-- <span class="area-text">{{item.region_name}}</span> -->
+		            			<span class="area-text">福建</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            	</ul>
+		            	<ul class="area-data" v-show="cityState">
+		            		<li class="area-data-item" v-for="(item, index) in cityList" @click="checkCityOne(item.region_id, item.region_name)">
+		            			<span class="area-text">{{item.region_name}}</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            	</ul>
+		            	<ul class="area-data" v-show="countyState">
+		            		<li class="area-data-item" v-for="(item, index) in countyList" @click="checkRegionOne(index, item.region_name)">
+		            			<span class="area-text">{{item.region_name}}</span>
+		            			<i class="icon-check iconfont" style="margin-left: 0.1rem;"></i>
+		            		</li>
+		            	</ul>
+		            </div>
+	        	</section>
+	        </div>
+   		</transition>
+	</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scrollTop</title>
+	<style>
+		* {margin: 0;padding: 0;}
+		.box {
+			width: 400px;
+			margin: 20px auto;
+			border: 1px solid #000;
+		}
+		.list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		.list li {
+			float: left;
+			width: 40px;
+			height: 38px;
+			line-height: 38px;
+			float: left;
+			text-align: center;
+			cursor: pointer;
+			background-color: #ccc;
+		}
+		.list li.list_active {
+			background-color: #f00;
+		}
+		.content {
+
+		}
+		.content-item {
+			padding: 10px 0 0;
+			height: 100px;
+			display: none;
+		}
+		.content_item_active {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" class="box">
+		<ul id="list" class="list">
+			<li @click="handleCont(1)" :class="{list_active: 1==contShow}">1</li>
+			<li @click="handleCont(2)" :class="{list_active: 2==contShow}">2</li>
+			<li @click="handleCont(3)" :class="{list_active: 3==contShow}">3</li>
+		</ul>
+		<div id="content" class="content">
+			<div class="content-item" :class="{content_item_active: 1==contShow}">内容 1</div>
+			<div class="content-item" :class="{content_item_active: 2==contShow}">内容 2</div>
+			<div class="content-item" :class="{content_item_active: 3==contShow}">内容 3</div>
+		</div>
+	</div>
+	<script src="./js/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#box',
+			data: {
+				contShow: 1
+			},
+			methods: {
+				handleCont: function(num) {
+					this.contShow = num;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

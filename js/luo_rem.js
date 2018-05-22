@@ -1,0 +1,1 @@
+(function(doc,win){var docEl=doc.documentElement;var htmlWidth=docEl.clientWidth||document.body.clientWidth;docEl.style.fontSize=htmlWidth/10+"px"})(document,window);

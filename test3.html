@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>icon</title>
+	<link rel="stylesheet" href="./css/lk-common.css">
+	<style>
+	</style>
+</head>
+<body>
+	<!-- <a href="javascript:;" class="lk-btn lk-btn-primary">提交订单</a> -->
+	<div>
+		<div class="sales-promotion">
+	    	<div class="subleft avil">
+	            <div class="price ">¥<strong>99</strong></div>
+	            <div class="information">
+	               <div class="oprice">原价：¥<del>398.00</del></div>
+	               <div class="soldcount"><span>135698</span>件已售</div>
+	            </div>
+	        </div>
+	        <div class="countdown">
+	           		<div id="J_CountDownTxt" class="txt">距结束仅剩</div>
+	                <div class="clockrun">
+		                 <span class="num" id="J_TimeHour">08</span><span class="dot">:</span>
+		                 <span class="num" id="J_TimeMin">30</span><span class="dot">:</span>
+		                 <span class="num" id="J_TimeSec">22</span><span class="dot">:</span>
+		                 <span class="num" id="J_TimeWSec">02</span>
+	                </div>
+	        </div>
+    	</div>
+	</div>
+	<script>
+		setInterval(getRTime, 100);
+		function GetDateStr(AddDayCount) {
+		    var dd = new Date();
+		    dd.setDate(dd.getDate() + AddDayCount);
+		    var y = dd.getFullYear();
+		    var m = dd.getMonth() + 1;
+		    var d = dd.getDate();
+		    return y + "/" + m + "/" + d;
+		}
+		function getRTime() {
+		    var EndTime = new Date(GetDateStr(1));
+		    var NowTime = new Date();
+		    var t = EndTime.getTime() - NowTime.getTime();
+		    if (t > 0) {
+		        var h = Math.floor(t / 1000 / 60 / 60);
+		        var m = Math.floor(t / 1000 / 60 % 60);
+		        var s = Math.floor(t / 1000 % 60);
+		        var w = Math.floor(t / 100 % 10);
+		        document.getElementById("J_TimeHour").innerHTML = (Array(2).join(0) + h).slice(-2);
+		        document.getElementById("J_TimeMin").innerHTML = (Array(2).join(0) + m).slice(-2);
+		        document.getElementById("J_TimeSec").innerHTML = (Array(2).join(0) + s).slice(-2);
+		        document.getElementById("J_TimeWSec").innerHTML = (Array(2).join(0) + w).slice(-2);
+		    }
+		}
+	</script>
+</body>
+</html>

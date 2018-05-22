@@ -1,0 +1,33 @@
+ <div>
+    <div class="area-mask mask_active"></div> 
+        <div class="area-contain area_contain_active">
+        <section class="area-main">
+            <header class="area-header">所在地区<i class="iconfont icon-close area-close"></i></header>
+            <div class="area-top  border-a">
+                <div class="area-province area-top-item"></div>
+                <div class="area-city area-top-item"></div>
+                <div class="area-region area-top-item"></div>
+            </div>
+            <div class="area-content border">
+            <ul class="area-data">
+                <li class="area-data-item">
+                <span class="area-text"></span>
+                <i class="icon-check iconfont" style="margin-left: 0.1rem"></i></li>
+            </ul>
+             <ul class="area-data" :class="{none: 2!=areaStatus}" v-if="data[checkProvince]">
+                 <li class="area-data-item" v-for="(item,key,index) in data[checkProvince].child" @click="checkCityOne(key,item.name,checkProvince)" :class="{red: key==checkCity}">
+                 <span class="area-text">{{item.name}}</span>
+                 <i class="icon-check iconfont"style="margin-left: 0.1rem" :class="{none: key != checkCity}"></i>
+                 </li>
+             </ul>
+             <ul class="area-data" :class="{none: 3!=areaStatus}" v-if="data[checkProvince]&&data[checkProvince].child[checkCity].child">
+                 <li class="area-data-item" v-for="(item,key,index) in data[checkProvince].child[checkCity].child" @click="checkRegionOne(key,item.name)" :class="{red: key==checkRegion}">
+                 <span class="area-text">{{item.name}}</span>
+                 <i class="icon-check iconfont" style="margin-left: 0.1rem" :class="{none: key != checkRegion}"></i>
+                 </li>
+             </ul>
+            </div>
+        </section>
+        </div>
+        </transition> 
+</div>
